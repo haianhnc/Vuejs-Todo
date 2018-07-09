@@ -1,15 +1,18 @@
 <template>
   <div id="app">
+    <create-todo @create-todo="createTodo" />
     <todo-list v-bind:todos="todos"/>
   </div>
 </template>
 
 <script>
 import TodoList from './components/TodoList';
+import createTodo from './components/CreateTodo';
 
 export default {
   name: 'App',
   components: {
+    createTodo,
     TodoList,
   },
 
@@ -36,6 +39,12 @@ export default {
         done: true,
       }],
     };
+  },
+
+  methods: {
+    createTodo(todo) {
+      this.todos.push(todo);
+    },
   },
 };
 </script>
